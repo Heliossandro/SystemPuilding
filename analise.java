@@ -18,11 +18,28 @@ Data: 19.05.2024
  - ArtigosInterface
 
 3. Entidades Fortes e Seus Atributos (Modelo)
+  MoradoresModelo
+  - int id
+  - String nome
+  - String proprietario
+  - char genero
+  - Date dataDeNascimento
+
+   ApartamentosModelo
+   - int id
+   - int numApartamento
+   - MoradoresModelo morador
+   - Andar andar
+
+   PagamentosModelo
+   - int id
+   - ApartamentosModelo apartamento
+   - Meses meses
+   - FuncionariosModelo funcionarios
 
 4. Ficheiro
 
 5. Tabelas de Apoio (Auxiliares) = Entidades Fracas
-  - Apartamentos.tab
   - Andar.tab 
   - Meses.tab
 
