@@ -21,13 +21,27 @@ Data: 19.05.2024
   MoradoresModelo
   - int id
   - String nome
-  - String proprietario
+  - String proprietario (sim, nao)
   - char genero
   - Date dataDeNascimento
+
+  vagaDeEstacionamento
+  - int id
+  - int numVaga
+  - String ocupado (sim, nao)
+  - VeiculoModelo veiculo
+
+  VeiculoModelo
+  - int id
+  - String veiculo
+  - String marca
+  - String matricula
+  - String cor
 
    ApartamentosModelo
    - int id
    - int numApartamento
+   - String 
    - MoradoresModelo morador
    - Andar andar
 
@@ -41,7 +55,9 @@ Data: 19.05.2024
 
 5. Tabelas de Apoio (Auxiliares) = Entidades Fracas
   - Andar.tab 
-  - Meses.tab
+  - Meses.tab 
+  - tipoDePagamento.tab
+  - MetodoDePagamento.tab
 
 6. Listagens e Pesquisas
 
