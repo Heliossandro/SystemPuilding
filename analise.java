@@ -51,6 +51,12 @@ Data: 19.05.2024
    - Meses meses
    - FuncionariosModelo funcionarios
 
+   FuncionariosModelo
+   - int id
+   - String nome;
+   - String senha;
+   - Documento documento;
+
 4. Ficheiro
 
 5. Tabelas de Apoio (Auxiliares) = Entidades Fracas
@@ -58,6 +64,7 @@ Data: 19.05.2024
   - Meses.tab 
   - tipoDePagamento.tab
   - MetodoDePagamento.tab
+  - Documento.tab
 
 6. Listagens e Pesquisas
 
