@@ -21,7 +21,13 @@ public class ListarFuncionarios extends JFrame {
 
         funcionarioDAO = new FuncionarioDAO();
 
-        tableModel = new DefaultTableModel(new Object[]{"ID", "Nome", "Cargo", "Senha"}, 0);
+        tableModel = new DefaultTableModel(new Object[]{"ID", "Nome", "Cargo", "Senha"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Impede a edição direta dos campos na tabela
+            }
+        };
+
         table = new JTable(tableModel);
 
         carregarFuncionarios();
@@ -91,7 +97,7 @@ public class ListarFuncionarios extends JFrame {
         tableModel.setRowCount(0);
         List<FuncionarioModelo> funcionarios = funcionarioDAO.getAll();
         for (FuncionarioModelo funcionario : funcionarios) {
-            tableModel.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getSenha(),funcionario.getCargo()});
+            tableModel.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getCargo(), funcionario.getSenha()});
         }
     }
 
