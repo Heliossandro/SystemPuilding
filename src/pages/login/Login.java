@@ -67,7 +67,7 @@ public class Login extends JFrame {
                 JOptionPane.showMessageDialog(this, "Funcionário não encontrado!");
             } else if (!funcionario.getSenha().equals(senha)) {
                 JOptionPane.showMessageDialog(this, "Senha incorreta!");
-            } else if (!funcionario.getCargo().equals("FuncionarioADM")) {
+            } else if (!funcionario.getCargo().equals("funcionarioADM")) {
                 JOptionPane.showMessageDialog(this, "Cargo incorreto! Apenas administradores podem fazer login.");
             } else {
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido!");

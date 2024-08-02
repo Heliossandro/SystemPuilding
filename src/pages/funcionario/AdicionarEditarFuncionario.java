@@ -101,7 +101,7 @@ public class AdicionarEditarFuncionario extends JDialog {
             return;
         }
 
-        if (FuncionarioModelo.CARGO_ADM.equals(cargo) && !authPassword.equals("ADM1234567")) {
+        if (!authPassword.equals("ADM1234567")) {
             JOptionPane.showMessageDialog(this, "Senha de autenticação inválida.");
             return;
         }

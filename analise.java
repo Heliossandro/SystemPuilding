@@ -22,6 +22,7 @@ Data: 19.05.2024
   - int id
   - String nome
   - String proprietario (sim, nao)
+  - String numTelefone
   - char genero
   - Date dataDeNascimento
 
@@ -53,9 +54,18 @@ Data: 19.05.2024
 
    FuncionariosModelo
    - int id
-   - String nome;
-   - String senha;
-   - Documento documento;
+   - String nome
+   - String senha
+   - String numTelefone
+   - char genero
+   - Documento documento
+
+   ArtigosModelo
+   - int id
+   - double preco
+   - String nomeArtigo
+   - String dataDeCompra
+   - String estado (novo, semi-novo, estragado)
 
 4. Ficheiro
 
