@@ -42,7 +42,7 @@ public class VeiculoDAO {
         try (ObjectInputStream ios = new ObjectInputStream(new FileInputStream(FILE_NAME))){
             veiculos = (List<VeiculoModelo>) ios.readObject();
         }catch(IOException | ClassNotFoundException e){
-            JOptionPane.showMessegeDialog(null, "ERROR!");
+            JOptionPane.showMessageDialog(null, "ERROR!");
         }
         return veiculos;
     }
