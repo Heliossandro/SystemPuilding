@@ -16,7 +16,7 @@ public class ListarFuncionarios extends JFrame {
     public ListarFuncionarios() {
         setTitle("Listar Funcionários");
         setSize(600, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Para fechar apenas a janela atual
         setLocationRelativeTo(null);
 
         funcionarioDAO = new FuncionarioDAO();
