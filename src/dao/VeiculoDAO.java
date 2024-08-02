@@ -46,4 +46,12 @@ public class VeiculoDAO {
         }
         return veiculos;
     }
+
+    private void saveToFile(List<VeiculoModelo> veiculos){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))){
+            oos.writeObject(veiculos);;
+        }catch( IOException e){
+            e.printStackTrace();
+        }
+    }
 }
