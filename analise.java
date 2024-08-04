@@ -16,6 +16,8 @@ Data: 19.05.2024
  - FuncionariosInterface
  - PagamentosInterface
  - ArtigosInterface
+ - vagaDeEstacionamentoModelo
+ - VeiculoModelo
 
 3. Entidades Fortes e Seus Atributos (Modelo)
   MoradoresModelo
@@ -38,6 +40,7 @@ Data: 19.05.2024
   - String marca
   - String matricula
   - String cor
+  - MoradoresModelo morador
 
    ApartamentosModelo
    - int id

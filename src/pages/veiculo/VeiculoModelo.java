@@ -59,10 +59,3 @@ public class VeiculoModelo {
     }
 
 }
-
-/* VeiculoModelo
-- int id
-- String veiculo
-- String marca
-- String matricula
-- String cor */

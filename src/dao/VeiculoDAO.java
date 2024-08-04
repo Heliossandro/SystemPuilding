@@ -54,4 +54,10 @@ public class VeiculoDAO {
             e.printStackTrace();
         }
     }
+
+    private void delete(int id){
+        List<VeiculoModelo> veiculos = getAll();
+        veiculos.removeIf(veiculo -> veiculo.getId() == id);
+        saveToFile(veiculos);
+    }
 }

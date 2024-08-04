@@ -8,8 +8,7 @@ public class FuncionarioModelo implements Serializable {
     public static final String CARGO_GERAL = "funcionarioGeral";
 
     private int id;
-    private StringBufferModelo nome, senha;
-    private StringBufferModelo cargo;
+    private StringBufferModelo nome, senha, cargo;
 
     public FuncionarioModelo(int id, String nome, String senha, String cargo){
         this.id = id;
@@ -29,7 +28,7 @@ public class FuncionarioModelo implements Serializable {
     public String getNome(){
         return nome.get();
     }
-
+ 
     public String getSenha(){
         return senha.get();
     }
