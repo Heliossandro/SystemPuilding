@@ -2,13 +2,15 @@ package src.pages.menuPrincipal;
 
 import src.pages.funcionario.AdicionarEditarFuncionario;
 import src.pages.funcionario.ListarFuncionarios;
+import src.pages.morador.AdicionarEditarMorador;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPrincipal extends JFrame implements ActionListener {
     private JMenu funcionariosMenu, moradoresMenu;
-    private JMenuItem cadastrarFuncionario, listarFuncionario, cadastrarVeiculo;
+    private JMenuItem cadastrarFuncionario, listarFuncionario, cadastrarVeiculo, cadastrarMorador;
 
     public MenuPrincipal() {
         setTitle("Menu Principal");
@@ -24,10 +26,12 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         cadastrarFuncionario = new JMenuItem("Cadastrar Funcionário");
         listarFuncionario = new JMenuItem("Listar Funcionário");
         cadastrarVeiculo = new JMenuItem("Cadastrar Veículo");
+        cadastrarMorador = new JMenuItem("Cadastrar Morador");
 
         funcionariosMenu.add(cadastrarFuncionario);
         funcionariosMenu.add(listarFuncionario);
         moradoresMenu.add(cadastrarVeiculo);
+        moradoresMenu.add(cadastrarMorador);
 
         menuBar.add(funcionariosMenu);
         menuBar.add(moradoresMenu);
@@ -37,6 +41,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         cadastrarFuncionario.addActionListener(this);
         listarFuncionario.addActionListener(this);
         cadastrarVeiculo.addActionListener(this);
+        cadastrarMorador.addActionListener(this);
     }
 
     @Override
@@ -47,6 +52,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
             new ListarFuncionarios().setVisible(true);
         } else if (e.getSource() == cadastrarVeiculo) {
             JOptionPane.showMessageDialog(this, "Cadastrar Veículo clicado!");
+        }else if( e.getSource() == cadastrarMorador ){
+            new AdicionarEditarMorador(this, null).setVisible(true);;
         }
     }
 

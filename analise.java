@@ -16,6 +16,7 @@ Data: 19.05.2024
  - FuncionariosInterface
  - PagamentosInterface
  - ArtigosInterface
+ - VisitaInterface
  - vagaDeEstacionamentoModelo
  - VeiculoModelo
 
@@ -26,7 +27,7 @@ Data: 19.05.2024
   - String proprietario (sim, nao)
   - String numTelefone
   - char genero
-  - Date dataDeNascimento
+  - String dataDeNascimento
 
   vagaDeEstacionamento
   - int id
@@ -62,6 +63,13 @@ Data: 19.05.2024
    - String numTelefone
    - char genero
    - Documento documento
+
+   VisitaModelo
+   - int id
+   - String nome
+   - ApartamentoModelo apartamento
+   - String horaEntrada
+   - String horaSaida
 
    ArtigosModelo
    - int id

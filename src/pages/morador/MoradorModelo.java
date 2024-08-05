@@ -1,8 +1,10 @@
 package src.pages.morador;
 
+import java.io.Serializable;
+
 import src.components.utils.StringBufferModelo;
 
-public class MoradorModelo {
+public class MoradorModelo implements Serializable {
     private int id;
     private StringBufferModelo nome, proprietario, numTelefone, dataDeNascimento;
     private char genero;
@@ -16,29 +18,29 @@ public class MoradorModelo {
         this.genero = genero;
     }
 
-    //Mrtodos get
+    //Metodos get
     public int getId(){
         return id;
     }
 
-    public String nome(){
+    public String getNome(){
         return nome.get();
     }
 
     
-    public String proprietario(){
+    public String getProprietario(){
         return proprietario.get();
     }
 
-    public String numTelefone(){
+    public String getNumTelefone(){
         return numTelefone.get();
     }
     
-    public String dataDeNascimento(){
+    public String getDataDeNascimento(){
         return dataDeNascimento.get();
     }
 
-    public char genero(){
+    public char getGenero(){
         return genero;
     }
     
