@@ -1,4 +1,4 @@
-package src.pages.morador;
+package src.models;
 
 import java.io.Serializable;
 

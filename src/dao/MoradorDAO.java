@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-import src.pages.morador.MoradorModelo;
+import src.models.MoradorModelo;
 
 public class MoradorDAO {
     private static final String FILE_NAME = "moradores.dat";

@@ -1,10 +1,10 @@
 package src.dao;
 
-import src.pages.funcionario.FuncionarioModelo;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import src.models.FuncionarioModelo;
 
 public class FuncionarioDAO {
     private static final String FILE_NAME = "funcionarios.dat";

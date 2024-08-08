@@ -1,11 +1,12 @@
 package src.pages.login;
 
 import src.dao.FuncionarioDAO;
-import src.pages.funcionario.FuncionarioModelo;
+import src.models.FuncionarioModelo;
 import src.pages.funcionario.AdicionarEditarFuncionario;
 import src.pages.funcionario.ListarFuncionarios;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

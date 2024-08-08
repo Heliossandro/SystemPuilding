@@ -2,7 +2,10 @@ package src.pages.funcionario;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import src.dao.FuncionarioDAO;
+import src.models.FuncionarioModelo;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

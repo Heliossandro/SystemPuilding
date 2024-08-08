@@ -1,4 +1,4 @@
-package src.pages.funcionario;
+package src.models;
 
 import src.components.utils.StringBufferModelo;
 import java.io.Serializable;

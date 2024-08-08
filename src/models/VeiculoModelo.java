@@ -1,4 +1,4 @@
-package src.pages.veiculo;
+package src.models;
 
 import src.components.utils.StringBufferModelo;
 

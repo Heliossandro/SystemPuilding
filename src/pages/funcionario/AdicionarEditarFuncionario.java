@@ -1,10 +1,13 @@
 package src.pages.funcionario;
 
 import src.dao.FuncionarioDAO;
+import src.models.FuncionarioModelo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class AdicionarEditarFuncionario extends JDialog {
     private JTextField nomeField;
@@ -13,6 +16,8 @@ public class AdicionarEditarFuncionario extends JDialog {
     private JPasswordField authPasswordField;
     private JButton saveButton;
     private JButton cancelButton;
+    private int ultimoId = 0;
+    private List<FuncionarioModelo> funcionarios;
 
     private FuncionarioDAO funcionarioDAO;
     private FuncionarioModelo funcionario;
@@ -25,6 +30,8 @@ public class AdicionarEditarFuncionario extends JDialog {
 
         this.funcionarioDAO = new FuncionarioDAO();
         this.funcionario = funcionario;
+        this.funcionarios = funcionarioDAO.getAll(); // Inicializa a lista com os funcionários do DAO
+        atualizarUltimoId(); // Atualiza o ultimoId baseado nos funcionários existentes
 
         nomeField = new JTextField(20);
         senhaField = new JPasswordField(20);
@@ -85,6 +92,15 @@ public class AdicionarEditarFuncionario extends JDialog {
         });
     }
 
+    private void atualizarUltimoId(){
+        for(FuncionarioModelo funcionario : funcionarios){
+            if(funcionario.getId() > ultimoId){
+                ultimoId = funcionario.getId();
+            }
+        }
+        ultimoId++; // Incrementa o último ID para garantir que o próximo ID seja único
+    }
+
     private void salvarFuncionario() {
         String nome = nomeField.getText();
         String senha = new String(senhaField.getPassword());
@@ -107,10 +123,10 @@ public class AdicionarEditarFuncionario extends JDialog {
         }
 
         if (funcionario == null) {
-            funcionario = new FuncionarioModelo(0, nome, FuncionarioModelo.CARGO_ADM.equals(cargo) ? senha : null, cargo);
+            funcionario = new FuncionarioModelo(ultimoId, nome, FuncionarioModelo.CARGO_ADM.equals(cargo) ? senha : "", cargo);
         } else {
             funcionario.setNome(nome);
-            funcionario.setSenha(FuncionarioModelo.CARGO_ADM.equals(cargo) ? senha : null);
+            funcionario.setSenha(FuncionarioModelo.CARGO_ADM.equals(cargo) ? senha : "");
             funcionario.setCargo(cargo);
         }
 

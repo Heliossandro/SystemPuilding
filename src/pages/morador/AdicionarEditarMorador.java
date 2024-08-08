@@ -1,12 +1,13 @@
 package src.pages.morador;
 
 import src.dao.MoradorDAO;
-import src.pages.morador.*;
+import src.models.MoradorModelo;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class AdicionarEditarMorador extends JDialog {
     private JTextField nomeField, numTelefoneField, dataDeNascimentoField;
@@ -15,6 +16,8 @@ public class AdicionarEditarMorador extends JDialog {
                          simOp = new JRadioButton("Sim"),
                          naoOp = new JRadioButton("Não");
     private JButton saveButton, cancelButton;
+    private int ultimoId = 0;
+    private List<MoradorModelo> moradores;
 
     private MoradorDAO moradorDAO;
     private MoradorModelo morador;
@@ -27,6 +30,8 @@ public class AdicionarEditarMorador extends JDialog {
 
         this.moradorDAO = new MoradorDAO();
         this.morador = morador;
+        this.moradores = moradorDAO.getAll(); // Inicializa a lista de moradores com os dados do DAO
+        atualizarUltimoId(); // Atualiza o último ID baseado nos moradores existentes
 
         nomeField = new JTextField(20);
         numTelefoneField = new JTextField(15);
@@ -98,6 +103,15 @@ public class AdicionarEditarMorador extends JDialog {
         });
     }
 
+    private void atualizarUltimoId() {
+        for (MoradorModelo morador : moradores) {
+            if (morador.getId() > ultimoId) {
+                ultimoId = morador.getId();
+            }
+        }
+        ultimoId++; // Incrementa o último ID para garantir que o próximo ID seja único
+    }
+
     private void salvarMorador() {
         String nome = nomeField.getText();
         String telefone = numTelefoneField.getText();
@@ -111,7 +125,7 @@ public class AdicionarEditarMorador extends JDialog {
         }
 
         if (morador == null) {
-            morador = new MoradorModelo(0, nome, proprietario, dataDeNascimento, telefone, genero);
+            morador = new MoradorModelo(ultimoId, nome, proprietario, dataDeNascimento, telefone, genero);
         } else {
             morador.setNome(nome);
             morador.setNumTelefone(telefone);
@@ -127,6 +141,6 @@ public class AdicionarEditarMorador extends JDialog {
 
     public static void main(String[] args) {
         // Testando a interface gráfica
-        SwingUtilities.invokeLater(() -> new AdicionarEditarMorador(null, null));
+        SwingUtilities.invokeLater(() -> new AdicionarEditarMorador(null, null).setVisible(true));
     }
 }

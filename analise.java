@@ -28,6 +28,7 @@ Data: 19.05.2024
   - String numTelefone
   - char genero
   - String dataDeNascimento
+  - ApartamentosModelo apartamento
 
   vagaDeEstacionamento
   - int id
@@ -47,7 +48,6 @@ Data: 19.05.2024
    - int id
    - int numApartamento
    - String 
-   - MoradoresModelo morador
    - Andar andar
 
    PagamentosModelo
