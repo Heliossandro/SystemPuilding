@@ -1,8 +1,11 @@
 package src.models;
 
+import java.io.Serializable;
+
 import src.components.utils.StringBufferModelo;
 
-public class VeiculoModelo {
+public class VeiculoModelo implements Serializable
+ {
     private int id;
     private StringBufferModelo veiculo, marca, matricula, cor;
 

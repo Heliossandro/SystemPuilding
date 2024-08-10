@@ -47,8 +47,8 @@ Data: 19.05.2024
    ApartamentosModelo
    - int id
    - int numApartamento
-   - String 
    - Andar andar
+   - String Estado (Arrendado, comprado, Não usado)
 
    PagamentosModelo
    - int id

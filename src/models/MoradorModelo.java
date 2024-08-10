@@ -68,4 +68,12 @@ public class MoradorModelo implements Serializable {
     public void setGenero(char genero){
         this.genero = genero;
     }
+
+    public String toString(){
+        return "Nome: "+ nome +"/n"+
+                "Proprietario: "+ proprietario +"/n"+
+                "Numero de telefone: "+ numTelefone +"/n"+
+                "Data de nascimento: "+ dataDeNascimento +"/n"+
+                "Nome: "+ nome;
+    }
 }
