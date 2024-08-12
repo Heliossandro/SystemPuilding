@@ -48,13 +48,8 @@ public class ApartamentoModelo implements Serializable {
     }
 
     public String toString(){
-        return "Numero do apartamento: "+ numApartamento +"\n"+
-               "Numero do andar: "+ andar +"\n"+
-               "Estado do apartamento: "+ estado +"\n";
+        return "Apartamento: "+ numApartamento +"\n"+
+               " >> andar: "+ andar +"\n"+
+               " >> Estado: "+ estado.get() +"\n";
     }
 }
-
-/* ApartamentosModelo
-- int id
-- int numApartamento
-- Andar andar */

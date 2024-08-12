@@ -1,7 +1,9 @@
 package src.pages.morador;
 
 import src.dao.MoradorDAO;
+import src.dao.ApartamentoDAO;
 import src.models.MoradorModelo;
+import src.models.ApartamentoModelo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,27 +17,34 @@ public class AdicionarEditarMorador extends JDialog {
                          fOp = new JRadioButton("Feminino"),
                          simOp = new JRadioButton("Sim"),
                          naoOp = new JRadioButton("Não");
+    private JComboBox<ApartamentoModelo> apartamentoComboBox;
     private JButton saveButton, cancelButton;
     private int ultimoId = 0;
     private List<MoradorModelo> moradores;
+    private List<ApartamentoModelo> apartamentosDisponiveis;
 
     private MoradorDAO moradorDAO;
+    private ApartamentoDAO apartamentoDAO;
     private MoradorModelo morador;
 
     public AdicionarEditarMorador(Frame parent, MoradorModelo morador) {
         super(parent, true);
         setTitle(morador == null ? "Adicionar Morador" : "Editar Morador");
-        setSize(400, 300);
+        setSize(700, 400);
         setLocationRelativeTo(parent);
 
         this.moradorDAO = new MoradorDAO();
+        this.apartamentoDAO = new ApartamentoDAO();
         this.morador = morador;
         this.moradores = moradorDAO.getAll(); // Inicializa a lista de moradores com os dados do DAO
+        this.apartamentosDisponiveis = apartamentoDAO.getAll(); // Carrega todos os apartamentos disponíveis
         atualizarUltimoId(); // Atualiza o último ID baseado nos moradores existentes
 
         nomeField = new JTextField(20);
         numTelefoneField = new JTextField(15);
         dataDeNascimentoField = new JTextField(10);
+
+        apartamentoComboBox = new JComboBox<>(apartamentosDisponiveis.toArray(new ApartamentoModelo[0]));
 
         // Grupos de botões de rádio
         ButtonGroup sexoGroup = new ButtonGroup();
@@ -60,9 +69,11 @@ public class AdicionarEditarMorador extends JDialog {
             } else {
                 naoOp.setSelected(true);
             }
+            // Seleciona o apartamento associado ao morador
+            apartamentoComboBox.setSelectedItem(morador.getApartamento().getNumApartamento());
         }
 
-        JPanel panel = new JPanel(new GridLayout(6, 2));
+        JPanel panel = new JPanel(new GridLayout(7, 2));
         panel.add(new JLabel("Nome:"));
         panel.add(nomeField);
         panel.add(new JLabel("Telefone:"));
@@ -79,6 +90,8 @@ public class AdicionarEditarMorador extends JDialog {
         proprietarioPanel.add(simOp);
         proprietarioPanel.add(naoOp);
         panel.add(proprietarioPanel);
+        panel.add(new JLabel("Apartamento:"));
+        panel.add(apartamentoComboBox);
 
         saveButton = new JButton("Salvar");
         cancelButton = new JButton("Cancelar");
@@ -118,6 +131,7 @@ public class AdicionarEditarMorador extends JDialog {
         String dataDeNascimento = dataDeNascimentoField.getText();
         char genero = mOp.isSelected() ? 'M' : 'F';
         String proprietario = simOp.isSelected() ? "Sim" : "Não";
+        ApartamentoModelo apartamentoSelecionado = (ApartamentoModelo) apartamentoComboBox.getSelectedItem();
 
         if (nome.trim().isEmpty() || telefone.trim().isEmpty() || dataDeNascimento.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.");
@@ -125,13 +139,14 @@ public class AdicionarEditarMorador extends JDialog {
         }
 
         if (morador == null) {
-            morador = new MoradorModelo(ultimoId, nome, proprietario, dataDeNascimento, telefone, genero);
+            morador = new MoradorModelo(ultimoId, nome, proprietario, telefone, dataDeNascimento, genero, apartamentoSelecionado);
         } else {
             morador.setNome(nome);
             morador.setNumTelefone(telefone);
             morador.setDataDeNascimento(dataDeNascimento);
             morador.setGenero(genero);
             morador.setProprietario(proprietario);
+            morador.setApartamento(apartamentoSelecionado);
         }
 
         moradorDAO.save(morador);

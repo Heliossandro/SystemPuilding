@@ -1,7 +1,6 @@
 package src.dao;
 
 import src.models.VeiculoModelo;
-import src.pages.veiculo.*;
 
 import java.io.*;
 import java.util.*;
