@@ -55,7 +55,6 @@ public class MoradorDAO {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             moradores = (List<MoradorModelo>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
         }
         return moradores;
     }
@@ -66,5 +65,15 @@ public class MoradorDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public MoradorModelo findByName(String nome) {
+        List<MoradorModelo> moradores = getAll();
+        for (MoradorModelo morador : moradores) {
+            if (morador.getNome().equalsIgnoreCase(nome)) {
+                return morador;
+            }
+        }
+        return null;
     }
 }

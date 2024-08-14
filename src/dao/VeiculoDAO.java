@@ -9,22 +9,25 @@ import javax.swing.*;
 public class VeiculoDAO {
     private static final String FILE_NAME = "veiculos.dat";
 
-    public void save(VeiculoModelo veiculo){
+    public void save(VeiculoModelo veiculo) {
         List<VeiculoModelo> veiculos = getAll();
-        boolean found = false;
+        veiculos.add(veiculo);
+        saveToFile(veiculos);
+    }
 
-        for(int i = 0; i < veiculos.size(); i++){
-            if(veiculos.get(i).getId() == veiculo.getId()){
-                veiculos.set(i, veiculo);
-                found = true;
+    public void update(VeiculoModelo veiculoAtualizado) {
+        List<VeiculoModelo> veiculos = getAll();
+
+        for (int i = 0; i < veiculos.size(); i++) {
+            if (veiculos.get(i).getId() == veiculoAtualizado.getId()) {
+                veiculos.set(i, veiculoAtualizado);
                 break;
             }
         }
-        if(!found){
-            veiculos.add(veiculo);
-        }
+
         saveToFile(veiculos);
     }
+
     public VeiculoModelo get(int id){
         List<VeiculoModelo> veiculos = getAll();
         for (VeiculoModelo veiculo : veiculos){
@@ -42,7 +45,6 @@ public class VeiculoDAO {
         try (ObjectInputStream ios = new ObjectInputStream(new FileInputStream(FILE_NAME))){
             veiculos = (List<VeiculoModelo>) ios.readObject();
         }catch(IOException | ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null, "ERROR!");
         }
         return veiculos;
     }
