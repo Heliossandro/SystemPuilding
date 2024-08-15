@@ -67,7 +67,7 @@ public class VeiculoModelo implements Serializable {
     }
 
     public void setMorador(MoradorModelo morador) {
-        this.morador = morador.getNome();  // Armazena o nome do morador como String
+        this.morador = morador.getNome(); 
     }
 
     @Override

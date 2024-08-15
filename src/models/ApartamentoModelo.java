@@ -6,15 +6,17 @@ import src.components.utils.StringBufferModelo;
 
 public class ApartamentoModelo implements Serializable {
     private int id, numApartamento, andar;
-    private StringBufferModelo estado;
+    private StringBufferModelo estado, vagaEstacionamento;
 
-    public ApartamentoModelo(int id, int numApartamento, int andar, String estado){
+    public ApartamentoModelo(int id, int numApartamento, int andar, String estado, String vagaEstacionamento){
         this.id = id;
         this.numApartamento = numApartamento;
         this.andar = andar;
         this.estado = new StringBufferModelo(estado);
+        this.vagaEstacionamento = new StringBufferModelo(vagaEstacionamento);
     }
 
+    
     public int getId(){
         return id;
     }
@@ -30,6 +32,10 @@ public class ApartamentoModelo implements Serializable {
     public String getEstado(){
         return estado.get();
     } 
+
+    public String getVagaEstacionamento(){
+        return vagaEstacionamento.get();
+    }
     
     public void setId(int id){
         this.id = id;
@@ -47,9 +53,15 @@ public class ApartamentoModelo implements Serializable {
         this.estado.set(estado);
     }
 
+    public void setVagaEstacionamento(String  vagaEstacionamento){
+        this.vagaEstacionamento.set(vagaEstacionamento);
+    }
+    
+
     public String toString(){
         return "Apartamento: "+ numApartamento +"\n"+
                " >> andar: "+ andar +"\n"+
-               " >> Estado: "+ estado.get() +"\n";
+               " >> Estado: "+ estado.get() +"\n"+
+               " >> Estacionamento: "+ vagaEstacionamento.get() +"\n";
     }
 }

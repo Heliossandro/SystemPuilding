@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AdicionarEditarApartamento extends JDialog {
     private JTextField numApartamentoField, andarField;
-    private JComboBox<String> estadoComboBox;
+    private JComboBox<String> estadoComboBox, vagaEstacionamentoComboBox;
     private JButton saveButton, cancelButton;
     private int ultimoId = 0;
     private List<ApartamentoModelo> apartamentos;
@@ -39,10 +39,14 @@ public class AdicionarEditarApartamento extends JDialog {
         // Criando a JComboBox para o estado
         estadoComboBox = new JComboBox<>(new String[]{"Arrendado", "Comprado", "Não usado"});
 
+         // Criando a JComboBox para o estado
+         vagaEstacionamentoComboBox = new JComboBox<>(new String[]{"Disponivel", "Indisponivel"});
+
         if (apartamento != null) {
             numApartamentoField.setText(String.valueOf(apartamento.getNumApartamento()));
             andarField.setText(String.valueOf(apartamento.getAndar()));
             estadoComboBox.setSelectedItem(apartamento.getEstado());
+            vagaEstacionamentoComboBox.setSelectedItem(apartamento.getVagaEstacionamento());
         }
 
         JPanel panel = new JPanel(new GridLayout(4, 2));
@@ -52,6 +56,8 @@ public class AdicionarEditarApartamento extends JDialog {
         panel.add(andarField);
         panel.add(new JLabel("Estado:"));
         panel.add(estadoComboBox);
+        panel.add(new Label("Vaga de Estacionamento: "));
+        panel.add(vagaEstacionamentoComboBox);
 
         saveButton = new JButton("Salvar");
         cancelButton = new JButton("Cancelar");
@@ -89,6 +95,7 @@ public class AdicionarEditarApartamento extends JDialog {
         int numApartamento = Integer.parseInt(numApartamentoField.getText());
         int andar = Integer.parseInt(andarField.getText());
         String estado = (String) estadoComboBox.getSelectedItem();
+        String vagaEstacionamento = (String) vagaEstacionamentoComboBox.getSelectedItem();
 
         if (estado == null || estado.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "O estado do apartamento deve ser selecionado.");
@@ -96,11 +103,12 @@ public class AdicionarEditarApartamento extends JDialog {
         }
 
         if (apartamento == null) {
-            apartamento = new ApartamentoModelo(ultimoId, numApartamento, andar, estado);
+            apartamento = new ApartamentoModelo(ultimoId, numApartamento, andar, estado, vagaEstacionamento);
         } else {
             apartamento.setNumApartamento(numApartamento);
             apartamento.setAndar(andar);
             apartamento.setEstado(estado);
+            apartamento.setVagaEstacionamento(vagaEstacionamento);
         }
 
         apartamentoDAO.save(apartamento);

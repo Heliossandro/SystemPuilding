@@ -12,13 +12,12 @@ Data: 19.05.2024
 2. Visao [Interfaces Graficas]
  - Login   
  - MenuPrincipal
- - MoradoresInterface
- - FuncionariosInterface
+ - MoradoresInterface FEITO
+ - FuncionariosInterface FEITO
  - PagamentosInterface
  - ArtigosInterface
  - VisitaInterface
- - vagaDeEstacionamentoModelo
- - VeiculoModelo
+ - VeiculoModelo FEITO
 
 3. Entidades Fortes e Seus Atributos (Modelo)
   MoradoresModelo
@@ -49,6 +48,7 @@ Data: 19.05.2024
    - int numApartamento
    - Andar andar
    - String Estado (Arrendado, comprado, Não usado)
+   - String vagaDeEstacionamentoModelo (Disponivel, indisponivel)
 
    PagamentosModelo
    - int id

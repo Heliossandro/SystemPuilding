@@ -4,7 +4,6 @@ import src.models.VeiculoModelo;
 
 import java.io.*;
 import java.util.*;
-import javax.swing.*;
 
 public class VeiculoDAO {
     private static final String FILE_NAME = "veiculos.dat";
@@ -58,7 +57,7 @@ public class VeiculoDAO {
     }
 
     @SuppressWarnings("unused")
-    private void delete(int id){
+    public void delete(int id){
         List<VeiculoModelo> veiculos = getAll();
         veiculos.removeIf(veiculo -> veiculo.getId() == id);
         saveToFile(veiculos);

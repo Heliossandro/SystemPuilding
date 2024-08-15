@@ -3,6 +3,7 @@ package src.pages.menuPrincipal;
 import src.pages.funcionario.AdicionarEditarFuncionario;
 import src.pages.funcionario.ListarFuncionarios;
 import src.pages.morador.AdicionarEditarMorador;
+import src.pages.veiculo.AdicionarEditarVeiculo;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,8 @@ import java.awt.event.ActionListener;
 
 public class MenuPrincipal extends JFrame implements ActionListener {
     private JMenu funcionariosMenu, moradoresMenu;
-    private JMenuItem cadastrarFuncionario, listarFuncionario, cadastrarVeiculo, cadastrarMorador;
+    private JMenuItem cadastrarFuncionario, listarFuncionario, cadastrarVeiculo, cadastrarMorador
+                      ;
 
     public MenuPrincipal() {
         setTitle("Menu Principal");
@@ -51,7 +53,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         } else if (e.getSource() == listarFuncionario) {
             new ListarFuncionarios().setVisible(true);
         } else if (e.getSource() == cadastrarVeiculo) {
-            JOptionPane.showMessageDialog(this, "Cadastrar Veículo clicado!");
+            new AdicionarEditarVeiculo(null, null).setVisible(true);
         }else if( e.getSource() == cadastrarMorador ){
             new AdicionarEditarMorador(this, null).setVisible(true);;
         }
