@@ -4,6 +4,7 @@ import src.dao.FuncionarioDAO;
 import src.models.FuncionarioModelo;
 import src.pages.funcionario.AdicionarEditarFuncionario;
 import src.pages.funcionario.ListarFuncionarios;
+import src.pages.menuPrincipal.MenuPrincipal;
 
 import javax.swing.*;
 
@@ -72,7 +73,7 @@ public class Login extends JFrame {
                 JOptionPane.showMessageDialog(this, "Cargo incorreto! Apenas administradores podem fazer login.");
             } else {
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
-                new ListarFuncionarios().setVisible(true);
+                new MenuPrincipal().setVisible(true);
                 dispose();
             }
         } catch (NumberFormatException e) {

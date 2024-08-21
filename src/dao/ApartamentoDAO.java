@@ -62,4 +62,15 @@ public class ApartamentoDAO {
             e.printStackTrace();
         }
     }
+
+    public ApartamentoModelo findyByApartamento(int numApartamento) {
+        List<ApartamentoModelo> apartamentos = getAll();
+        for (ApartamentoModelo apartamento : apartamentos) {
+            if (apartamento.getNumApartamento() == numApartamento) {
+                return apartamento;
+            }
+        }
+        return null;
+    }
+    
 }
