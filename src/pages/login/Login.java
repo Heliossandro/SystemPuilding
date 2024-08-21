@@ -3,7 +3,6 @@ package src.pages.login;
 import src.dao.FuncionarioDAO;
 import src.models.FuncionarioModelo;
 import src.pages.funcionario.AdicionarEditarFuncionario;
-import src.pages.funcionario.ListarFuncionarios;
 import src.pages.menuPrincipal.MenuPrincipal;
 
 import javax.swing.*;

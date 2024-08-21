@@ -18,6 +18,7 @@ Data: 19.05.2024
  - ArtigosInterface
  - VisitaInterface
  - VeiculoModelo FEITO
+ - ApartamentoModelo FEITO
 
 3. Entidades Fortes e Seus Atributos (Modelo)
   MoradoresModelo
@@ -74,9 +75,10 @@ Data: 19.05.2024
    ArtigosModelo
    - int id
    - double preco
-   - String nomeArtigo
-   - String dataDeCompra
+   - String nome
+   - String dataCompra
    - String estado (novo, semi-novo, estragado)
+   - String Observacao
 
 4. Ficheiro
 
