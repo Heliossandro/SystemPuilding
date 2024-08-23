@@ -14,8 +14,8 @@ Data: 19.05.2024
  - MenuPrincipal
  - MoradoresInterface FEITO
  - FuncionariosInterface FEITO
- - PagamentosInterface
- - ArtigosInterface
+ - PagamentosInterface FEITO
+ - ArtigosInterface FEITO
  - VisitaInterface
  - VeiculoModelo FEITO
  - ApartamentoModelo FEITO

@@ -1,8 +1,10 @@
 package src.models;
 
+import java.io.Serializable;
+
 import src.components.utils.StringBufferModelo;
 
-public class ArtigoModelo {
+public class ArtigoModelo  implements Serializable{
     private int id;
     private double preco;
     private StringBufferModelo nome, dataCompra, estado, observacao;
@@ -13,7 +15,7 @@ public class ArtigoModelo {
         this.nome = new StringBufferModelo(nome);
         this.dataCompra = new StringBufferModelo(dataCompra);
         this.estado = new StringBufferModelo(estado);
-        this.observacao = new StringBufferModelo(observacao);
+        this.observacao = observacao != null ? new StringBufferModelo(observacao) : new StringBufferModelo(observacao);
     }
 
     public int getId(){
@@ -22,6 +24,10 @@ public class ArtigoModelo {
 
     public double getPreco(){
         return preco;
+    }
+
+    public String getNome(){
+        return nome.get();
     }
     
     public String getDataCompra(){
