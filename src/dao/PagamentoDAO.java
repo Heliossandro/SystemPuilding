@@ -2,7 +2,9 @@ package src.dao;
 
 
 
+import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,7 +15,7 @@ import java.util.List;
 import src.models.PagamentoModelo;
 
 
-public class PagamentosDAO {
+public class PagamentoDAO {
     private static final String FILE_NAME = "pagamentos.dat";
 
     public void save(PagamentoModelo pagamento) {
@@ -33,6 +35,32 @@ public class PagamentosDAO {
         }
         
         saveToFile(pagamentos);
+    }
+
+    public List<String> getMesesPagos(int numeroApartamento, int ano) {
+        List<String> mesesPagos = new ArrayList<>();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            while (true) {
+                PagamentoModelo pagamento = (PagamentoModelo) ois.readObject();
+                
+                // Verifica se o pagamento foi feito para o apartamento e ano especificados
+                if (pagamento.getApartamento().getNumApartamento() == numeroApartamento &&
+                    pagamento.getDataPagamento().endsWith(String.valueOf(ano))) {
+                    
+                    // Adiciona o mês à lista de meses pagos
+                    mesesPagos.add(pagamento.getMeses());
+                }
+            }
+        } catch (EOFException eof) {
+            // Fim do arquivo
+        } catch (FileNotFoundException fnf) {
+            System.err.println("Arquivo não encontrado: " + FILE_NAME);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return mesesPagos;
     }
 
     public void delete(int id) {

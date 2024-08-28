@@ -62,7 +62,7 @@ public class Login extends JFrame {
         try {
             int id = Integer.parseInt(idField.getText());
             String senha = new String(senhaField.getPassword());
-
+    
             FuncionarioModelo funcionario = funcionarioDAO.get(id);
             if (funcionario == null) {
                 JOptionPane.showMessageDialog(this, "Funcionário não encontrado!");
@@ -72,7 +72,10 @@ public class Login extends JFrame {
                 JOptionPane.showMessageDialog(this, "Cargo incorreto! Apenas administradores podem fazer login.");
             } else {
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
-                new MenuPrincipal().setVisible(true);
+                
+                // Passa o funcionário logado para o MenuPrincipal
+                MenuPrincipal menuPrincipal = new MenuPrincipal(funcionario);
+                menuPrincipal.setVisible(true);
                 dispose();
             }
         } catch (NumberFormatException e) {

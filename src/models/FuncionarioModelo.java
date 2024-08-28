@@ -4,12 +4,22 @@ import src.components.utils.StringBufferModelo;
 import java.io.Serializable;
 
 public class FuncionarioModelo implements Serializable {
+    private static final long serialVersionUID = 7915799766965423151L;
+
+
     public static final String CARGO_ADM = "funcionarioADM";
     public static final String CARGO_GERAL = "funcionarioGeral";
 
     private int id;
     private StringBufferModelo nome, senha, cargo;
 
+    public FuncionarioModelo() {
+        this.id = 0;
+        this.nome = new StringBufferModelo("");
+        this.senha = new StringBufferModelo("");
+        this.cargo = new StringBufferModelo(CARGO_GERAL); 
+    }
+    
     public FuncionarioModelo(int id, String nome, String senha, String cargo){
         this.id = id;
         this.nome = new StringBufferModelo(nome);

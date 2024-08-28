@@ -25,6 +25,16 @@ public class FuncionarioDAO {
         saveToFile(funcionarios);
     }
 
+    public FuncionarioModelo obterFuncionarioLogado(String nomeUsuario) {
+        List<FuncionarioModelo> funcionarios = getAll();
+        for (FuncionarioModelo funcionario : funcionarios) {
+            if (funcionario.getNome().equals(nomeUsuario)) {
+                return funcionario;
+            }
+        }
+        return null;
+    }
+
     public FuncionarioModelo get(int id) {
         List<FuncionarioModelo> funcionarios = getAll();
         for (FuncionarioModelo funcionario : funcionarios) {

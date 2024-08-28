@@ -4,6 +4,8 @@ import java.io.Serializable;
 import src.components.utils.StringBufferModelo;
 
 public class MoradorModelo implements Serializable {
+    private static final long serialVersionUID = 7915799766965423151L;
+
     private int id;
     private StringBufferModelo nome, proprietario, numTelefone, dataDeNascimento;
     private char genero;

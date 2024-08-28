@@ -5,6 +5,9 @@ import java.io.Serializable;
 import src.components.utils.StringBufferModelo;
 
 public class ApartamentoModelo implements Serializable {
+    private static final long serialVersionUID = 7915799766965423151L;
+
+
     private int id, numApartamento, andar;
     private StringBufferModelo estado, vagaEstacionamento;
 

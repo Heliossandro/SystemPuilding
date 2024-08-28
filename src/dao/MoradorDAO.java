@@ -1,6 +1,8 @@
 package src.dao;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -30,6 +32,27 @@ public class MoradorDAO {
         }
         
         saveToFile(moradores);
+    }
+
+    public List<MoradorModelo> getByApartamento(int numeroApartamento) {
+        List<MoradorModelo> moradores = new ArrayList<>();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            while (true) {
+                MoradorModelo morador = (MoradorModelo) ois.readObject();
+                if (morador.getApartamento().getNumApartamento() == numeroApartamento) {
+                    moradores.add(morador);
+                }
+            }
+        } catch (EOFException eof) {
+            // Fim do arquivo
+        } catch (FileNotFoundException fnf) {
+            System.err.println("Arquivo não encontrado: " + FILE_NAME);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return moradores;
     }
 
     public void delete(int id) {
